@@ -1,6 +1,6 @@
 /**
  * 문제 제목 : 컴백홈
- * 문제 링크 : https://www.acmicpc.net/problem/14620
+ * 문제 링크 : https://www.acmicpc.net/problem/1189
  *
  * 문제가 길어서 링크로 확인해야 함
  */
