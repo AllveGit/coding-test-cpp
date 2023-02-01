@@ -13,91 +13,93 @@
  * 패턴과 파일 이름이 모두 주어졌을 때, 각각의 파일 이름이 패턴과 일치하는지 아닌지를 구하는 프로그램을 작성하시오.
  */
 
-#include <bits/stdc++.h>
-using namespace std;
+/**
+ * 개선 전 문제 풀이 
+ */
+// #include <bits/stdc++.h>
+// using namespace std;
 
-int Cnt;
-string Pattern;
-string Inputs[101];
+// int Cnt;
+// string Pattern;
+// string Inputs[101];
 
-vector<string> Split(string InString, const string& InDelimeter)
-{
-    vector<string> ret;
-    long long pos;
-    string token = "";
-    while ((pos = InString.find(InDelimeter)) != string::npos)
-    {
-        token = InString.substr(0, pos);
-        ret.push_back(token);
-        InString.erase(0, pos + InDelimeter.length());
-    }
-    ret.push_back(InString);
-    return ret;
-}
+// vector<string> Split(string InString, const string& InDelimeter)
+// {
+//     vector<string> ret;
+//     long long pos;
+//     string token = "";
+//     while ((pos = InString.find(InDelimeter)) != string::npos)
+//     {
+//         token = InString.substr(0, pos);
+//         ret.push_back(token);
+//         InString.erase(0, pos + InDelimeter.length());
+//     }
+//     ret.push_back(InString);
+//     return ret;
+// }
 
-int main()
-{
-    cin >> Cnt;
+// int main()
+// {
+//     cin >> Cnt;
 
-    cin >> Pattern;
+//     cin >> Pattern;
 
-    vector<string> splitPattern = Split(Pattern, "*");
-    string beginPattern = splitPattern[0];
-    string endPattern = splitPattern[1];
+//     vector<string> splitPattern = Split(Pattern, "*");
+//     string beginPattern = splitPattern[0];
+//     string endPattern = splitPattern[1];
 
-    for (int i = 0; i < Cnt; i++)
-    {
-        cin >> Inputs[i];
-    }
+//     for (int i = 0; i < Cnt; i++)
+//     {
+//         cin >> Inputs[i];
+//     }
 
-    long long pos;
-    for (int i = 0; i < Cnt; i++)
-    {
-        string s = Inputs[i];
-        pos = s.find(beginPattern);
-        if (pos == string::npos || pos != 0)
-        {
-            cout << "NE" << "\n";
-            continue;
-        }
+//     long long pos;
+//     for (int i = 0; i < Cnt; i++)
+//     {
+//         string s = Inputs[i];
+//         pos = s.find(beginPattern);
+//         if (pos == string::npos || pos != 0)
+//         {
+//             cout << "NE" << "\n";
+//             continue;
+//         }
 
-        s.erase(0, beginPattern.length());
+//         s.erase(0, beginPattern.length());
 
-        pos = s.rfind(endPattern);
-        if (pos == string::npos || pos != (s.length() - endPattern.length()))
-        {
-            cout << "NE" << "\n";
-            continue;
-        }
+//         pos = s.rfind(endPattern);
+//         if (pos == string::npos || pos != (s.length() - endPattern.length()))
+//         {
+//             cout << "NE" << "\n";
+//             continue;
+//         }
 
-        cout << "DA" << "\n";
-    }
+//         cout << "DA" << "\n";
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
 /**
- * 개선 후 코드
+ * 개선 후 문제 풀이 
  */
-
-// #include<bits/stdc++.h> 
-// using namespace std;   
-// int n; 
-// string s, ori_s, pre, suf; 
-// int main(){
-//     cin >> n;
-//     cin >> ori_s;  
-//     int pos = ori_s.find('*');  
-//     pre = ori_s.substr(0, pos); 
-//     suf = ori_s.substr(pos + 1); 
-//     for(int i = 0; i < n; i++){
-//         cin >> s; 
-//         if(pre.size() + suf.size() > s.size()){
-//             cout << "NE\n";
-//         }else{
-//             if(pre == s.substr(0, pre.size()) && suf == s.substr(s.size() - suf.size())) cout << "DA\n";
-//             else cout <<"NE\n";  
-//         } 
-//     } 
-//     return 0;
-// } 
+#include<bits/stdc++.h> 
+using namespace std;   
+int n; 
+string s, ori_s, pre, suf; 
+int main(){
+    cin >> n;
+    cin >> ori_s;  
+    int pos = ori_s.find('*');  
+    pre = ori_s.substr(0, pos); 
+    suf = ori_s.substr(pos + 1); 
+    for(int i = 0; i < n; i++){
+        cin >> s; 
+        if(pre.size() + suf.size() > s.size()){
+            cout << "NE\n";
+        }else{
+            if(pre == s.substr(0, pre.size()) && suf == s.substr(s.size() - suf.size())) cout << "DA\n";
+            else cout <<"NE\n";  
+        } 
+    } 
+    return 0;
+} 

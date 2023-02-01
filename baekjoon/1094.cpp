@@ -14,7 +14,9 @@
  * X가 주어졌을 때, 위의 과정을 거친다면, 몇 개의 막대를 풀로 붙여서 Xcm를 만들 수 있는지 구하는 프로그램을 작성하시오. 
  */
 
-// 개선 전 문제 풀이
+/**
+ * 개선 전 문제 풀이 
+ */
 // #include <bits/stdc++.h>
 // int x;
 // using namespace std;
@@ -38,7 +40,9 @@
 //     return 0;
 // }
 
-// 개선 후 문제 풀이
+/**
+ * 개선 후 문제 풀이 
+ */
 #include <bits/stdc++.h>
 using namespace std;
 int n, ret = 1;

@@ -13,63 +13,65 @@
  * 매일 측정한 온도가 정수의 수열로 주어졌을 때, 연속적인 며칠 동안의 온도의 합이 가장 큰 값을 계산하는 프로그램을 작성하시오. 
  */
 
-#include <bits/stdc++.h>
-using namespace std;
-
-queue<int> arr;
-int arrNums, selectNum;
-int sum = 0;
-int maxSum = INT_MIN;
-
-int main()
-{
-    cin >> arrNums >> selectNum;
-
-    for (int i = 0; i < arrNums; i++)
-    {
-        int value;
-        cin >> value;
-
-        sum += value;
-
-        arr.push(value);
-
-        if (arr.size() == selectNum) 
-        {
-            if (maxSum < sum)
-            {
-                maxSum = sum;
-            }
-
-            int subVal = arr.front();
-            sum -= subVal;
-            arr.pop();
-        }
-    }
-
-    cout << maxSum;
-
-    return 0;
-}
-
 /**
- * 개선 후 코드 
+ * 개선 전 문제 풀이 
  */
+// #include <bits/stdc++.h>
+// using namespace std;
 
-// #include<bits/stdc++.h> 
-// using namespace std;  
-// typedef long long ll;  
-// int n, k, temp, psum[100001], ret = -1000000; 
-// int main(){
-// 	ios_base::sync_with_stdio(false);
-// 	cin.tie(NULL);cout.tie(NULL);
-// 	cin >> n >> k; 
-// 	for(int i = 1; i <= n; i++){
-// 		cin >> temp; psum[i] = psum[i - 1] + temp; 
-// 	} 
-// 	for(int i = k; i <= n; i++){
-// 		ret = max(ret, psum[i] - psum[i - k]);
-// 	}
-// 	cout << ret << "\n";
+// queue<int> arr;
+// int arrNums, selectNum;
+// int sum = 0;
+// int maxSum = INT_MIN;
+
+// int main()
+// {
+//     cin >> arrNums >> selectNum;
+
+//     for (int i = 0; i < arrNums; i++)
+//     {
+//         int value;
+//         cin >> value;
+
+//         sum += value;
+
+//         arr.push(value);
+
+//         if (arr.size() == selectNum) 
+//         {
+//             if (maxSum < sum)
+//             {
+//                 maxSum = sum;
+//             }
+
+//             int subVal = arr.front();
+//             sum -= subVal;
+//             arr.pop();
+//         }
+//     }
+
+//     cout << maxSum;
+
 //     return 0;
 // }
+
+/**
+ * 개선 후 문제 풀이 
+ */
+#include<bits/stdc++.h> 
+using namespace std;  
+typedef long long ll;  
+int n, k, temp, psum[100001], ret = -1000000; 
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);cout.tie(NULL);
+	cin >> n >> k; 
+	for(int i = 1; i <= n; i++){
+		cin >> temp; psum[i] = psum[i - 1] + temp; 
+	} 
+	for(int i = k; i <= n; i++){
+		ret = max(ret, psum[i] - psum[i - k]);
+	}
+	cout << ret << "\n";
+    return 0;
+}
